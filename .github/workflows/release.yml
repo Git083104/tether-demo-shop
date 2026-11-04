@@ -1,0 +1,11 @@
+name: release
+on:
+  workflow_dispatch:
+jobs:
+  publish:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload release archive
+        run: aws s3 cp dist/app.tar.gz s3://tether-demo-ship-artifacts/releases/${{ github.sha }}.tar.gz
